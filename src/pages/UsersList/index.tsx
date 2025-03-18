@@ -4,9 +4,7 @@ import UserListComponent from './components/UserListComponent';
 import PaginationComponent from './components/PaginationComponent';
 import SearchComponent from './components/SearchComponent';
 import { UserType } from './types';
-
-const NO_OF_MEMBERS_PER_PAGE = 10;
-const DEFAULT_PAGE_NUMBER = 1;
+import { DEFAULT_PAGE_NUMBER, NO_OF_USERS_PER_PAGE } from './constants';
 
 function index() {
 
@@ -26,8 +24,8 @@ function index() {
     member.email.toLowerCase().includes(searchText.toLowerCase()) ||
     member.role.toLowerCase().includes(searchText.toLowerCase())
   ))
-  const noOfPages = filteredUsers.length ? Math.ceil(filteredUsers.length/NO_OF_MEMBERS_PER_PAGE) : 0;
-  const currentUsersList = filteredUsers.slice((pageNumber - 1) * NO_OF_MEMBERS_PER_PAGE, pageNumber * NO_OF_MEMBERS_PER_PAGE);
+  const noOfPages = filteredUsers.length ? Math.ceil(filteredUsers.length/NO_OF_USERS_PER_PAGE) : 0;
+  const currentUsersList = filteredUsers.slice((pageNumber - 1) * NO_OF_USERS_PER_PAGE, pageNumber * NO_OF_USERS_PER_PAGE);
 
   useEffect(() => {
     let ignore = false;
