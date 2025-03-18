@@ -13,14 +13,14 @@ type indexProps = {
 
 const index:React.FC<indexProps> = ({ pageNumber, setPageNumber, noOfPages, onClickDeleteSelected }) => {
     
-    const splPageClass = "flex justify-center items-center w-9 h-9 border rounded-full text-sm outline-none"
+    const splPageClass = "flex justify-center items-center w-6 h-6 md:w-9 md:h-9 border rounded-full text-sm outline-none"
     const prevPageClass = `${splPageClass} ${pageNumber === 1 ? 'text-gray-400 bg-gray-200 border-gray-400' : 'bg-[#2A90FF] text-gray-50 border-[#2A90FF] cursor-pointer'}`
     const nextPageClass = `${splPageClass} ${pageNumber === noOfPages ? 'text-gray-400 bg-gray-200 border-gray-400' : 'bg-[#2A90FF] text-gray-50 border-[#2A90FF] cursor-pointer'}`
     
-    return <section className="flex justify-center gap-4 w-full">
+    return <section className="flex flex-col md:flex-row justify-center gap-4 pb-2 w-full">
         <button className='justify-start py-2 px-4 bg-red-500 text-gray-50 hover:bg-red-500 hover:cursor-pointer rounded-full text-sm font-medium' onClick={onClickDeleteSelected}>Delete Selected</button>
         <div className="flex-grow">
-            <nav className="flex justify-center items-center gap-5">
+            <nav className="flex justify-center items-center gap-3 md:gap-5">
                 {noOfPages > 1 ? 
                     <>
                         {noOfPages > 2 ? <button 

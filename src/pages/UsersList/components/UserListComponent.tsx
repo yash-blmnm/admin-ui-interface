@@ -34,7 +34,7 @@ const index:React.FC<indexProps> = ({ users, updateSelectUsers, selectedIds, isL
         <table className="table-fixed w-full">
             <thead>
                 <tr className="border-b border-gray-300">
-                    <th className='pl-4 pt-2 pb-4 w-[10%] text-left'>
+                    <th className='pl-2 md:pl-4 pt-2 pb-4 w-[8%] md:w-[10%] text-left'>
                         {users.length ? <input checked={selectedIds.length === users.length ? true : false} type='checkbox' onChange={selectAll}/> : ''}
                     </th>
                     <th className='pt-2 pb-4 w-[25%] text-left'>Name</th>

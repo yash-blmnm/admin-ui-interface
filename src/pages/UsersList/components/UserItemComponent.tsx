@@ -16,7 +16,7 @@ const index:React.FC<indexProps> = ({ member, isSelectedRow, selectUser, updateU
     const [ isErrorInput, setIsErrorInput ] = useState<boolean>(false);
     const { id, name, role, email } = memberValue;
     const [ isEditing, setIsEditing ] = useState<boolean>(false);
-    const editButtonClass = `cursor-pointer rounded-full text-xs font-medium py-0.5 px-2 outline-none`;
+    const editButtonClass = `cursor-pointer rounded-full text-xs font-medium py-0.25 md:py-0.5 px-1 md:px-2 outline-none`;
     const errorClass = isErrorInput ? 'border-red-500' : 'border-gray-400';
 
     const onUpdateUser = () => {
@@ -34,23 +34,23 @@ const index:React.FC<indexProps> = ({ member, isSelectedRow, selectUser, updateU
         setIsEditing(false);
     }
     
-    return <tr key={id} className={`border-b border-gray-300 text-gray-900 ${isSelectedRow ? 'bg-gray-200' : ''}`}>
-            <td className='pl-4 h-[58px] w-[10%]'><input type='checkbox' checked={isSelectedRow} onChange={(e) => selectUser(e.target.checked, id)}/></td>
-            <td className='text-left h-[58px] w-[25%]'>
+    return <tr key={id} className={`border-b border-gray-300 text-gray-900 ${isSelectedRow ? 'bg-gray-200' : ''} h-[58px] md:h-[52px]`}>
+            <td className='pl-2 md:pl-4  w-[18%] md:w-[10%]'><input type='checkbox' checked={isSelectedRow} onChange={(e) => selectUser(e.target.checked, id)}/></td>
+            <td className='text-left text-wrap  w-[25%]'>
                 {isEditing ? 
                     <input className={`outline-none w-[90%] border ${errorClass}`} type='text' defaultValue={name} onChange={(e) => setUserValue({...memberValue, name: e.target.value})} /> 
                 : 
                     name
                 }
             </td>
-            <td className='text-left h-[58px] w-[30%]'>
+            <td className='text-left truncate  w-[30%]'>
                 {isEditing ? 
                     <input className={`outline-none w-[90%] border ${errorClass}`} type='text' defaultValue={email} onChange={(e) => setUserValue({...memberValue, email: e.target.value})} /> 
                 : 
                     email
                 }
             </td>
-            <td className='text-center h-[58px] w-[15%]'>
+            <td className='relative text-center w-[15%]'>
                 {isEditing ? 
                 <select className="outline-none" name="role" id="role-select" defaultValue={role} onChange={(e) => setUserValue({...memberValue, role: e.target.value})}>
                     <option value="admin">admin</option>
@@ -60,8 +60,8 @@ const index:React.FC<indexProps> = ({ member, isSelectedRow, selectUser, updateU
                     role
                 }
             </td>
-            <td className='text-center h-[58px] pr-2 w-[20%]'>
-                <div className='flex justify-center gap-2'>
+            <td className='text-center  md:pr-2 w-[18%] md:w-[20%]'>
+                <div className='flex flex-col md:flex-row items-center justify-center gap-2 w-full'>
                     {isEditing ?
                         <>
                             <button className={`save bg-[#2A90FF] text-gray-50 hover:bg-[#2a91ff] border border-[#2A90FF] ${editButtonClass}`} onClick={onUpdateUser}>Save</button>
@@ -69,7 +69,7 @@ const index:React.FC<indexProps> = ({ member, isSelectedRow, selectUser, updateU
                         </>
                     : 
                     <>
-                        <button className='edit outline-none mr-4 cursor-pointer'><RiEditBoxLine className='text-blue-500' onClick={() => setIsEditing(true)} /></button>
+                        <button className='edit outline-none md:mr-4  cursor-pointer'><RiEditBoxLine className='text-blue-500' onClick={() => setIsEditing(true)} /></button>
                         <button className='delete outline-none cursor-pointer'><RiDeleteBin7Line className='text-red-500' onClick={() => updateUser('delete', id)}/></button>
                     </>
                     }
